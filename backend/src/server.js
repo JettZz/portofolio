@@ -4,6 +4,8 @@ const cors = require('cors');
 
 dotenv.config();
 
+const db = require('./config/db')
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -38,6 +40,8 @@ app.get ('/api/biodata', (req, res) => {
   }
     });
 });
+
+
 
 app.use((req, res) => {
     res.status(404).json({
