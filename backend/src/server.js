@@ -41,7 +41,8 @@ app.get ('/api/biodata', (req, res) => {
     });
 });
 
-
+const profileRoutes = require('./routes/profileRoutes')
+app.use('/api/profile', profileRoutes)
 
 app.use((req, res) => {
     res.status(404).json({
