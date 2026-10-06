@@ -46,9 +46,9 @@ const projectRoutes = require('./routes/projectRoutes')
 const skillRoutes = require('./routes/skillRoutes')
 const experienceRoutes = require('./routes/experienceRoutes')
 app.use('/api/profile', profileRoutes)
-app.use('/api/profile', projectRoutes)
-app.use('/api/profile', skillRoutes)
-app.use('/api/profile', experienceRoutes)
+app.use('/api/project', projectRoutes)
+app.use('/api/skill', skillRoutes)
+app.use('/api/experience', experienceRoutes)
 
 app.use((req, res) => {
     res.status(404).json({

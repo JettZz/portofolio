@@ -1,8 +1,8 @@
 const skillModel = require('../models/skillModel');
 
-const getAllSkills = async (req, res) => {
+const getAllSkill = async (req, res) => {
     try {
-        const skills = await skillModel.getAllSkills();
+        const skills = await skillModel.getAllSkill();
         res.status(200).json({ success: true, total: skills.length, data: skills });
     } catch (error) {
         res.status(500).json({ success: false, message: 'Server Error', error: error.message });
@@ -56,4 +56,4 @@ const deleteSkill = async (req, res) => {
     }
 };
 
-module.exports = { getAllSkills, getSkillById, createSkill, updateSkill, deleteSkill };
+module.exports = { getAllSkill, getSkillById, createSkill, updateSkill, deleteSkill };

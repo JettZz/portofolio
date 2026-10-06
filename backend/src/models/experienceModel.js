@@ -5,8 +5,8 @@ const getAllExperiences = async () => {
     return rows
 }
 
-const getExperienceByID = async (id) => {
-    const [rows] = await db.query('SELECT * FROM experiences WHERE id = ?');
+const getExperienceById = async (id) => {
+    const [rows] = await db.query('SELECT * FROM experiences WHERE id = ?', [id]);
     return rows[0];
 }
 
@@ -35,4 +35,4 @@ const deleteExperience = async (id) => {
     return result
 }
 
-module.exports = { getAllExperiences, getExperienceByID, createExperience, updateExperience, deleteExperience };
+module.exports = { getAllExperiences, getExperienceById, createExperience, updateExperience, deleteExperience };
