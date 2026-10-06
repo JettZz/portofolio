@@ -11,19 +11,19 @@ const getSkillById = async (id) => {
 };
 
 const createSkill = async (data) => {
-    const { name, category, percentage, icon_url} = data;
+    const { name, category, level, icon} = data;
     const [result] = await db.query(
-        `INSERT INTO skills (name, category, percentage, icon_url) VALUES (?, ?, ?, ?)`,
-        [name, category || 'Other', percentage || 0, icon_url]
+        `INSERT INTO skills (name, category, level, icon_url) VALUES (?, ?, ?, ?)`,
+        [name, category || 'Other', level || 0, icon]
     );
     return result;
 };
 
 const updateSkill = async (id, data) => {
-    const { name, category, percentage, icon_url} = data;
+    const { name, category, level, icon} = data;
     const [result] = await db.query(
-        'UPDATE skills SET name = ?, category = ?, percentage = ?, icon_url= ? WHERE id = ?',
-        [name, category, percentage, icon_url, id]
+        'UPDATE skills SET name = ?, category = ?, level = ?, icon_url= ? WHERE id = ?',
+        [name, category, level, icon, id]
     );
     return result;
 };
