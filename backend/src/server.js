@@ -16,7 +16,7 @@ app.use(express.urlencoded ({ extended : true }));
 app.get ('/', (req, res) => {
     res.status(200).json({
         success : true,
-        message : 'Selamat datang',
+        message : 'Selamat datang di API Portofolio Dinamis',
         version : '1.0.0'
     });
 });
@@ -43,8 +43,12 @@ app.get ('/api/biodata', (req, res) => {
 
 const profileRoutes = require('./routes/profileRoutes')
 const projectRoutes = require('./routes/projectRoutes')
+const skillRoutes = require('./routes/skillRoutes')
+const experienceRoutes = require('./routes/experienceRoutes')
 app.use('/api/profile', profileRoutes)
 app.use('/api/profile', projectRoutes)
+app.use('/api/profile', skillRoutes)
+app.use('/api/profile', experienceRoutes)
 
 app.use((req, res) => {
     res.status(404).json({
