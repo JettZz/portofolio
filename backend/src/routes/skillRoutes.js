@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const skillController = require('../controller/skillController')
+
+router.get('/', skillController.getAllSkills);
+router.get('/:id', skillController.getSkillById);
+router.put('/:id', skillController.updateSkill);
+router.post('/', skillController.createSkill);
+router.delete('/:id', skillController.deleteSkill);
+
+module.exports = router;
