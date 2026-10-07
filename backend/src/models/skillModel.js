@@ -13,7 +13,7 @@ const getSkillById = async (id) => {
 const createSkill = async (data) => {
     const { name, category, level, icon} = data;
     const [result] = await db.query(
-        `INSERT INTO skill (name, category, level, icon_url) VALUES (?, ?, ?, ?)`,
+        `INSERT INTO skill (name, category, level, icon) VALUES (?, ?, ?, ?)`,
         [name, category || 'Other', level || 0, icon]
     );
     return result;
@@ -22,7 +22,7 @@ const createSkill = async (data) => {
 const updateSkill = async (id, data) => {
     const { name, category, level, icon} = data;
     const [result] = await db.query(
-        'UPDATE skill SET name = ?, category = ?, level = ?, icon_url= ? WHERE id = ?',
+        'UPDATE skill SET name = ?, category = ?, level = ?, icon= ? WHERE id = ?',
         [name, category, level, icon, id]
     );
     return result;
