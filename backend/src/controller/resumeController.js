@@ -70,7 +70,6 @@ const getResumeById = async (req, res) => {
 
 const uploadResume = async (req, res) => {
     try {
-        // Cek apakah ada file yang diunggah
         if (!req.file) {
             return res.status(400).json({
                 success: false,
