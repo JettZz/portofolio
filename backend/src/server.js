@@ -60,7 +60,7 @@ app.use('/api/contact', contactRoutes)
 app.use('/api/certificates', certificateRoutes)
 app.use('/api/testimoni', testimoniRoutes)
 app.use('/api/resumes', resumeRoutes)
-
+app.use('/api/auth', authRoutes)
 
 
 app.use((req, res) => {

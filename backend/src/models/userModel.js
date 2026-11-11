@@ -1,3 +1,4 @@
+const db = require('../config/db');
 // 1. Mencari user berdasarkan username (untuk cek duplikasi / login)
 const findByUsername = async (username) => {
     const [rows] = await db.query('SELECT * FROM users WHERE username = ?', [username]);
