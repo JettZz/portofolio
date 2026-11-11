@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const skillController = require('../controller/skillController')
-
-router.get('/', skillController.getAllSkill);
-router.get('/:id', skillController.getSkillById);
-router.put('/:id', skillController.updateSkill);
-router.post('/', skillController.createSkill);
-router.delete('/:id', skillController.deleteSkill);
+const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
+router.get('/', verifyToken, skillController.getAllSkill);
+router.get('/:id', verifyToken, skillController.getSkillById);
+router.put('/:id', verifyToken, authorizeRoles('admin'), skillController.updateSkill);
+router.post('/', verifyToken, authorizeRoles('admin'), skillController.createSkill);
+router.delete('/:id', verifyToken, authorizeRoles('admin'), skillController.deleteSkill);
 
 module.exports = router;

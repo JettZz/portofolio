@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const experienceController = require('../controller/experienceController')
-
-router.get('/', experienceController.getAllExperiences);
-router.get('/:id', experienceController.getExperienceById);
-router.put('/:id', experienceController.updateExperience);
-router.post('/', experienceController.createExperience);
-router.delete('/:id', experienceController.deleteExperience);
+const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
+router.get('/', verifyToken, experienceController.getAllExperiences);
+router.get('/:id', verifyToken, experienceController.getExperienceById);
+router.put('/:id', verifyToken, authorizeRoles('admin'), experienceController.updateExperience);
+router.post('/', verifyToken, authorizeRoles('admin'), experienceController.createExperience);
+router.delete('/:id', verifyToken, authorizeRoles('admin'), experienceController.deleteExperience);
 
 module.exports = router;

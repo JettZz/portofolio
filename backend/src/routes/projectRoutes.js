@@ -1,15 +1,15 @@
 const express = require('express')
 const router = express.Router();
 const projectController = require('../controller/projectController')
+const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
+router.get('/', verifyToken, projectController.getAllprojects);
 
-router.get('/', projectController.getAllprojects);
+router.get('/:id', verifyToken, projectController.getProjectById);
 
-router.get('/:id', projectController.getProjectById);
+router.post('/', verifyToken, authorizeRoles('admin'), projectController.createProject);
 
-router.post('/', projectController.createProject);
+router.put('/:id',  verifyToken, authorizeRoles('admin'), projectController.updateProject);
 
-router.put('/:id', projectController.updateProject);
-
-router.delete('/:id', projectController.deleteProject);
+router.delete('/:id', verifyToken, authorizeRoles('admin'), projectController.deleteProject);
 
 module.exports = router;
