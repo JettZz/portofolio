@@ -6,7 +6,7 @@ router.get('/', verifyToken, testimoniController.getAllTestimoni);
 
 router.get('/:id', verifyToken, testimoniController.getTestimoniById);
 
-router.post('/', verifyToken, authorizeRoles('admin'), testimoniController.createTestimoni);
+router.post('/', verifyToken, testimoniController.createTestimoni);
 
 router.put('/:id', verifyToken, authorizeRoles('admin'), testimoniController.updateTestimoni);
 
